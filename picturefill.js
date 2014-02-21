@@ -152,10 +152,19 @@
                 if (source.nodeName !== 'SOURCE' && source.nodeName !== 'SPAN') {
                     continue;
                 }
-                var media = sources[j].getAttribute( "data-media" );
+                var media;
+
+                if (source.hasAttribute("media"))
+                {
+                    media = source.getAttribute("media");
+                }
+                else if (source.hasAttribute("data-media"))
+                {
+                    media = source.getAttribute( "data-media" );
+                }
  
                 // if source does not have a srcset attribute, skip
-                if (!source.hasAttribute('data-srcset')) {
+                if (!source.hasAttribute('data-srcset') && !source.hasAttribute("srcset")) {
                     continue;
                 }
 
@@ -171,14 +180,19 @@
                 var matchedEl = matches.pop();
                 if( !picImg || picImg.parentNode.nodeName === "NOSCRIPT" ){
                     picImg = doc.createElement( "img" );
-                    picImg.alt = picture.getAttribute( "data-alt" );
+
                 }
                 var srcset = matchedEl.getAttribute('data-srcset');
                 var candidates;
-                if (matchedEl.hasAttribute('data-sizes')) {
+                if (matchedEl.hasAttribute('sizes')) {
+                    var sizes = matchedEl.getAttribute('sizes');
+                    candidates = w._getCandidatesFromSourceSet(srcset, sizes);
+                } 
+                else if (matchedEl.hasAttribute('data-sizes')) {
                     var sizes = matchedEl.getAttribute('data-sizes');
                     candidates = w._getCandidatesFromSourceSet(srcset, sizes);
-                } else {
+                } 
+                else {
                     candidates = w._getCandidatesFromSourceSet(srcset);
                 }
 
