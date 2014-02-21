@@ -36,5 +36,19 @@
 				<noscript><img src="external/imgs/small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
 			</span>
 		</div>
+
+		<div class="original">
+			<picture >
+				<source srcset="images/small.jpg"></source>
+				<source srcset="images/medium.jpg" media="(min-width: 400px)"></source>
+				<source srcset="images/large.jpg" media="(min-width: 800px)"></source>
+				<source srcset="images/extralarge.jpg" media="(min-width: 1000px)"></source>
+
+				<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+				<img src="images/small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
+			</picture>
+		</div>
+
+
 	</body>
 </html>
