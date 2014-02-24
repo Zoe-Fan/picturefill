@@ -29,7 +29,32 @@ Then whenever you want to include a picture on your site you can do the followin
 	</picture>
 ```
 
-This will work exactly like a normal image tag, and will add the image 
+This will work exactly like a normal image tag.
+
+Now if you want to support different images for desktop and smartphones you do the same thing as a responsive site and add media queries. Assuming that a tablet is anything wider than 480px and a desktop is something wider than 992px you would create the following picture tag.
+
+
+```html
+	<picture>
+		<source srcset="images/mobile.jpg"/>
+		<source srcset="images/mobile.jpg" media="(min-width: 480px)"/>
+		<source srcset="images/mobile.jpg" media="(min-width: 992px)"/>
+	</picture>
+```
+
+To handle browsers that don't support JavaScript we add a noscript tag and insert a standard image to be loaded
+
+```html
+	<picture>
+		<source srcset="images/mobile.jpg"/>
+		<source srcset="images/tablet.jpg" media="(min-width: 480px)"/>
+		<source srcset="images/desktop.jpg" media="(min-width: 992px)"/>
+		<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+		<noscript><img src="images/mobile.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></img></noscript>
+	</picture>
+```
+
+
 Mark up your responsive images like this.
 
 ```html
