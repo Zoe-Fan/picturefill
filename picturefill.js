@@ -181,15 +181,41 @@
                 var needToAppend = false;
                 var matchedEl = matches.pop();
                 if( !picImg || picImg.parentNode.nodeName === "NOSCRIPT" ){
-                    var alt = "";
-                    if (picImg)
+                    var altPic = doc.createElement( "img" );
+                    var srcElement = picImg ? picImg : picture;
+                    if (srcElement)
                     {
-                        alt = picImg.getAttribute("alt");
-                    }
-                    picImg = doc.createElement( "img" );
-                    picImg.alt = alt;
-                    needToAppend = true;
+                        for ( var idx=0; idx < srcElement.attributes.length; idx++)
+                        {
+                            var name = srcElement.attributes[idx].name;
+                            var value = srcElement.attributes[idx].value;
 
+                            if ( name.indexOf("data-") === 0)
+                            {
+                                name = name.substring(5);
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            console.log("Checking for property : " + name);
+                            if (name.toUpperCase() === "CLASS") 
+                            {
+                                altPic.className = value;
+                            }
+                            else if (name in altPic)
+                            {
+                                altPic[name] = value;
+                            }
+                            else
+                            {
+                                altPic.attributes[name] = value;
+                            }
+                        }
+                    }
+                    picImg = altPic;
+                    needToAppend = true;
                 }
                 var srcset = matchedEl.hasAttribute("srcset") ? matchedEl.getAttribute("srcset") : matchedEl.getAttribute("data-srcset");
                 var candidates;

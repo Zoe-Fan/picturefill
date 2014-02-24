@@ -15,7 +15,7 @@
 		
 		<h1>Picturefill: A &lt;picture&gt; element polyfill</h1>
 				
-		<p>For more info: <a href="http://github.com/scottjehl/picturefill">see project home.</a></p>
+		<p>For more info: <a href="https://github.com/Merkle-XD/picturefill">see project home.</a></p>
 
 		<div class="sizes">
 	        <span data-picture>
@@ -25,20 +25,10 @@
 	        </span>
     	</div>
 		
-		<div class="original">
-			<span data-picture data-alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
-				<span data-srcset="images/small.jpg"></span>
-				<span data-srcset="images/medium.jpg" data-media="(min-width: 400px)"></span>
-				<span data-srcset="images/large.jpg" data-media="(min-width: 800px)"></span>
-				<span data-srcset="images/extralarge.jpg" data-media="(min-width: 1000px)"></span>
-
-				<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
-				<noscript><img src="external/imgs/small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
-			</span>
-		</div>
+		
 
 		<div class="original">
-			<picture >
+			<picture  >
 				<source srcset="images/small.jpg"></source>
 				<source srcset="images/medium.jpg" media="(min-width: 400px)"></source>
 				<source srcset="images/large.jpg" media="(min-width: 800px)"></source>
@@ -47,7 +37,36 @@
 				<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
 				<img src="images/small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
 			</picture>
+
+
 		</div>
+
+		<div class="original">
+			<picture data-alt="test" data-class="test">
+				<source srcset="images/small.jpg"></source>
+				<source srcset="images/medium.jpg" media="(min-width: 400px)"></source>
+				<source srcset="images/large.jpg" media="(min-width: 800px)"></source>
+				<source srcset="images/extralarge.jpg" media="(min-width: 1000px)"></source>
+
+				<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+				<noscript><img src="images/small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
+			</picture>
+
+			
+		</div>
+
+<div class="original">
+			<picture >
+				<source srcset="images/small.jpg"></source>
+				<source srcset="images/medium.jpg" media="(min-width: 400px)"></source>
+				<source srcset="images/large.jpg" media="(min-width: 800px)"></source>
+				<source srcset="images/extralarge.jpg" media="(min-width: 1000px)"></source>
+			</picture>
+
+			
+		</div>
+
+
 
 
 	</body>

@@ -1,18 +1,35 @@
 # Picturefill
-A Responsive Images approach that you can use today that mimics the [proposed picture element](http://www.w3.org/TR/2013/WD-html-picture-element-20130226/) using `span`s, for safety sake.
+A JavaScript polyfill to implement Responsive Images using the [proposed picture element](http://www.w3.org/TR/2013/WD-html-picture-element-20130226/).
 
 
-* Author: Scott Jehl (c) 2012 (new proposal implemented by Shawn Jansepar)
+* Author: Scott Jehl (c) 2012 (new proposal implemented by Barry Latimer Jansepar)
 * License: MIT/GPLv2
 
 **Demo URL:** [http://jansepar.github.com/picturefill/](http://jansepar.github.com/picturefill/)
 
 **Draft Specification:** [http://picture.responsiveimages.org/](http://picture.responsiveimages.org/)
 
-**Note:** Picturefill works best in browsers that support CSS3 media queries. The demo page references (externally) the [matchMedia polyfill](https://github.com/paulirish/matchMedia.js/) which makes matchMedia work in `media-query`-supporting browsers that don't support `matchMedia`. `matchMedia` and the `matchMedia` polyfill are not required for `picturefill` to work, but they are required to support the `media` attributes on `picture` `source` elements. In non-media query-supporting browsers, the `matchMedia` polyfill will allow for querying native media types, such as `screen`, `print`, etc.	
 
-## Markup pattern and explanation
+## How to use
 
+First include the picturefill in the head of your html similar to 
+
+```html
+	<html>
+		<head>
+			<script src="picturefill.js"></script>
+		</head>
+```
+
+Then whenever you want to include a picture on your site you can do the following 
+
+```html
+	<picture>
+		<source srcset="images/small.jpg"/>
+	</picture>
+```
+
+This will work exactly like a normal image tag, and will add the image 
 Mark up your responsive images like this.
 
 ```html
